@@ -1,0 +1,37 @@
+:root {
+  --base-unit: 1rem;
+  --m: calc(var(--base-unit) * 2);
+  --x: calc(var(--base-unit) * 3);
+
+  --red: #ff2335;
+  --red-900: hsl(360, 100%, 69%);
+  --primary-color: blue;
+  --on-primary-color: white;
+
+  --surface-color: white;
+  --on-surface-color: #181818;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-size: 18px;
+}
+
+.grid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr 2fr 1fr;
+  font-size: 16px;
+  padding: 1rem;
+}
+
+.box {
+  font-size: 20px;
+  padding: var(--x);
+  border-color: var(--red);
+}

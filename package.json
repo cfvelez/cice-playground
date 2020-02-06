@@ -1,7 +1,6 @@
 {
   "name": "cice-playground",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "format": "prettier --write \"modules/**/*.{js,jsx,ts,tsx,json,css,md}\"",
@@ -32,5 +31,14 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://cfvelez@github.com/cfvelez/cice-playground.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cfvelez/cice-playground/issues"
+  },
+  "homepage": "https://github.com/cfvelez/cice-playground#readme",
+  "description": ""
 }
