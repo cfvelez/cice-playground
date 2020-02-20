@@ -1,0 +1,9 @@
+.advertising {
+  display: flex;
+  padding: var(--xl);
+}
+
+img {
+  width: 728px;
+  height: 90px;
+}
