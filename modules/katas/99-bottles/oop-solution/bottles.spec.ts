@@ -1,22 +1,13 @@
-import { BeerSong } from './beer-song'
+import { Bottles } from './bottles'
 
 describe('BeerSong', () => {
-  const song = new BeerSong()
+  const song = new Bottles()
 
   it('prints an arbitrary verse', () => {
     const expected =
       '8 bottles of beer on the wall, 8 bottles of beer.\nTake one down and pass it around, 7 bottles of beer on the wall.\n'
 
     const actual = song.verse(8)
-
-    expect(actual).toEqual(expected)
-  })
-
-  it('prints an arbitrary verse', () => {
-    const expected =
-      '42 bottles of beer on the wall, 42 bottles of beer.\nTake one down and pass it around, 41 bottles of beer on the wall.\n'
-
-    const actual = song.verse(42)
 
     expect(actual).toEqual(expected)
   })
