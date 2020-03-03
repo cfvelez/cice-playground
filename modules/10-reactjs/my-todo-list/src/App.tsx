@@ -19,7 +19,6 @@ export function App() {
         <div>{t.name}</div>
       ))}
       <input value={value} onChange={event => setValue(event.target.value)} />
-      <button name= />
     </>
   )
 }
