@@ -1,0 +1,5 @@
+.card {
+  border-style: solid;
+  border-radius: var(--radius);
+  background-color: cornsilk;
+}
