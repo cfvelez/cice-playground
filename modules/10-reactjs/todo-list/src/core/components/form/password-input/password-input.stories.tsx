@@ -1,21 +1,21 @@
 import React, { useState } from 'react'
-import { TextInput } from './text-input'
+import { PasswordInput } from './password-input'
 
 export default {
-  title: 'TextInput',
-  component: TextInput
+  title: 'PasswordInput',
+  component: PasswordInput
 }
 
 const WithState: React.FC<{ isRequired: boolean }> = ({ isRequired }) => {
   const [value, setValue] = useState('')
   return (
     <>
-      <TextInput
+      <PasswordInput
         required={isRequired}
         value={value}
         label="My input"
         onChange={setValue}
-      ></TextInput>
+      ></PasswordInput>
       State:{value}
     </>
   )
