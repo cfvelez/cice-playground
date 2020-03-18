@@ -1,24 +1,34 @@
-import React from 'react'
-import logo from './logo.svg'
+import React, { Suspense, lazy } from 'react'
 import './app.css'
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
+import { Header } from './header'
 
-export function App() {
+const UserDetail = lazy(() => import('./user-detail-page'))
+
+export const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Suspense fallback={<h1>Loading</h1>}>
+        <Switch>
+          <Route path="/" exact>
+            <h1>Home</h1>
+          </Route>
+
+          <Route path="/users" exact>
+            <h1>Users</h1>
+            {['pepito', 'menganito', 'fulanito'].map(name => (
+              <Link to={`/users/${name}`} key={name}>
+                {name}
+              </Link>
+            ))}
+          </Route>
+          <Route path="/users/:name" component={UserDetail} />
+          <Route>
+            <h1>404</h1>
+          </Route>
+        </Switch>
+      </Suspense>
+    </Router>
   )
 }
