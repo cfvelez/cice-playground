@@ -18,12 +18,10 @@ const reducer = (state: State, action: ActionType): State => {
       return { count: state.count - 1 }
     case 'reset':
       return initialState
-    default:
-      return state
   }
 }
 
-export const Counter: React.FC = () => {
+export const UseReducer: React.FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   return (
