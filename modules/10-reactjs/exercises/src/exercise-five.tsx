@@ -1,28 +1,22 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 export const ExerciseFive: React.FC = () => {
-  const [count, setCount] = useState(10)
-  const [info, setInfo] = useState('')
-  const [reset, setReset] = useState(false)
+  const initialCount = 10
+  const [counter, setCounter] = useState(initialCount)
 
-  useEffect(() => {
-    if (count != 0) {
-      setInfo(`The counter is in ${count}`)
-      setReset(false)
-    } else {
-      setInfo('Boom!')
-      setReset(true)
-    }
-  }, [count])
+  const hasCounterFinished = counter === 0
 
   return (
-    <>
-      <div>
-        <p>{info}</p>
-        <button onClick={() => setCount(count - 1)}>Click me</button>
-        <br></br>
-        {reset && <button onClick={() => setCount(10)}>Reset</button>}
-      </div>
-    </>
+    <div>
+      <button disabled={hasCounterFinished} onClick={() => setCounter(counter - 1)}>
+        {counter}
+      </button>
+      {hasCounterFinished && (
+        <>
+          <h1>¡Boom!</h1>
+          <button onClick={() => setCounter(initialCount)}>Reset</button>
+        </>
+      )}
+    </div>
   )
 }

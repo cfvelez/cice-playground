@@ -1,26 +1,33 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+
+interface PokemonDto {
+  count: number
+  next: string
+  previous: null | string
+  results: { name: string; url: string }[]
+}
 
 export const ExerciseSeven: React.FC = () => {
-  const [data, setData] = useState([])
-  const url = 'https://pokeapi.co/api/v2/pokemon'
+  const [pokemons, setPokemons] = useState<string[]>([])
 
-  const getPokemon = async (endpoint: string) => {
-    const response = await fetch(endpoint)
-    const json = await response.json()
-    return json.results
+  const fetchPokemons = async () => {
+    const response = await fetch('https://pokeapi.co/api/v2/pokemon')
+    const result: PokemonDto = await response.json()
+    const names = result.results.map(result => result.name)
+    setPokemons(names)
   }
 
   useEffect(() => {
-    getPokemon(url).then(info => setData(info))
-  }, [data])
+    fetchPokemons()
+  }, [])
 
   return (
-    <>
+    <div>
       <ul>
-        {data.map((item: any) => {
-          return <li>{item.name}</li>
-        })}
+        {pokemons.map(pokemon => (
+          <li key={pokemon}>{pokemon}</li>
+        ))}
       </ul>
-    </>
+    </div>
   )
 }

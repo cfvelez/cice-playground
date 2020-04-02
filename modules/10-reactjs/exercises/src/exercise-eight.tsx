@@ -1,10 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { CSSProperties } from 'react'
+import styles from './exercise-eight.module.css'
 
-const donut = `
-  background: conic-gradient(
-     red 36deg, orange 36deg 170deg, yellow 170deg);
-  border-radius: 50%`
+interface Props {
+  percentage: number
+}
 
-export const ExerciseEight: React.FC = () => {
-  return <></>
+export const ExerciseEight: React.FC<Props> = ({ percentage }) => {
+  const degrees = (360 * percentage) / 100
+  return (
+    <div
+      style={{ '--graph-percentage': `${degrees}deg` } as CSSProperties}
+      className={styles.graph}
+    >
+      <span className={styles.percentage}>{percentage}</span>
+    </div>
+  )
 }
