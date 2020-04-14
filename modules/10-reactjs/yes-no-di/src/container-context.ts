@@ -1,5 +1,4 @@
 import { createContext } from 'react'
-import { Dependencies } from './dependencies'
-import { dependencyTree } from './dependency-tree'
+import { container } from './container'
 
-export const ContainerContext = createContext<Dependencies>(dependencyTree)
+export const ContainerContext = createContext(container)
