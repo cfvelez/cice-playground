@@ -1,8 +1,13 @@
-type Action = { type: 'INCREMENT' }
+import { Action } from './action-creators'
+import { initialState, State } from './state'
 
-export function reducer(state: number = 0, action: Action): number {
+export function reducer(state: State = initialState, action: Action): State {
   switch (action.type) {
     case 'INCREMENT':
-      return state + 1
+      return { count: state.count + 1 }
+    case 'INCREMENT_BY':
+      return { count: state.count + action.by }
+    case 'DECREMENT':
+      return { count: state.count - 1 }
   }
 }
