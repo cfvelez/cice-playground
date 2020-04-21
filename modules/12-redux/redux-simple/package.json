@@ -1,0 +1,28 @@
+{
+  "name": "redux-simple",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "redux": "4.0.5"
+  },
+  "devDependencies": {
+    "@babel/core": "7.9.0",
+    "@babel/plugin-proposal-decorators": "7.8.3",
+    "@babel/preset-env": "7.9.5",
+    "@babel/preset-react": "7.9.4",
+    "@babel/preset-typescript": "7.9.0",
+    "@types/jest": "25.2.1",
+    "babel-jest": "25.4.0",
+    "jest": "25.4.0",
+    "parcel-bundler": "1.12.4",
+    "prettier": "2.0.5"
+  }
+}

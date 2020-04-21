@@ -1,43 +1,30 @@
-import React, { useState } from 'react'
-import { Todo } from './todo'
+import React, { useReducer, useState } from 'react'
 import styles from './app.module.css'
 import { bind } from '../utils/bind'
+import { reducer } from './reducer'
 
 const cx = bind(styles)
 
+export function useTodos() {
+  const [todos, dispatch] = useReducer(reducer, [])
+  return { todos, dispatch }
+}
+
 export const App: React.FC = () => {
-  const [todos, setTodos] = useState<Todo[]>([])
-
-  function createTodo(todoText: string) {
-    const newTodo: Todo = { id: Math.floor(Math.random() * 1000), text: todoText, completed: false }
-    setTodos([...todos, newTodo])
-  }
-
+  const { todos, dispatch } = useTodos()
   const [todoText, setTodoText] = useState('')
+
   const isTodoDuplicated = todos.map(todo => todo.text).includes(todoText)
-
   const clearTodo = () => setTodoText('')
-
-  function completeTodo(id: number) {
-    setTodos(
-      todos.map(todo => {
-        if (todo.id === id) {
-          return {
-            ...todo,
-            completed: !todo.completed
-          }
-        }
-
-        return todo
-      })
-    )
-  }
 
   return (
     <main>
       <ul>
         {todos.map(todo => (
-          <li onClick={() => completeTodo(todo.id)} className={cx({ completed: todo.completed })}>
+          <li
+            onClick={() => dispatch({ type: 'COMPLETE_TODO', payload: { id: todo.id } })}
+            className={cx({ completed: todo.completed })}
+          >
             {todo.text}
           </li>
         ))}
@@ -45,7 +32,10 @@ export const App: React.FC = () => {
       <form
         onSubmit={event => {
           event.preventDefault()
-          createTodo(todoText)
+          dispatch({
+            type: 'CREATE_TODO',
+            payload: { id: Math.floor(Math.random() * 1000), text: todoText }
+          })
           clearTodo()
         }}
       >
