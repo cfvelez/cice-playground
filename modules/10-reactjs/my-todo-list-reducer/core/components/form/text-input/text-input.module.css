@@ -1,0 +1,15 @@
+.input {
+  border: 1px solid var(--gray-color);
+}
+
+.input:focus {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: var(--blue-color);
+}
+
+.required {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: var(--red-color);
+}
