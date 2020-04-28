@@ -25,12 +25,6 @@ interface RemoveTodoAction {
   }
 }
 
-export const saveTodoAction = (): Thunk => {
-  return (dispatch: AppDispatch) => {
-    ...
-  }
-}
-
 export const createTodo = (payload: TodoPayload): TodoAction => {
   return {
     type: 'CREATE_TODO',
@@ -49,6 +43,19 @@ export const removeTodo = (payload: { id: number }): TodoAction => {
   return {
     type: 'REMOVE_TODO',
     payload
+  }
+}
+
+export const saveTodo = (payload: TodoPayload): Thunk => {
+  return (dispatch: AppDispatch) => {
+    setTimeout(() => {
+      const todo: Todo = {
+        ...payload,
+        completed: false
+      }
+      localStorage.setItem('todo', JSON.stringify(todo))
+      dispatch(createTodo(payload))
+    }, 1_000)
   }
 }
 
