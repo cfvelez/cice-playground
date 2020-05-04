@@ -1,0 +1,24 @@
+{
+  "name": "exercises",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "7.9.6",
+    "@babel/preset-typescript": "7.9.0",
+    "@types/jest": "25.2.1",
+    "jest": "25.5.4",
+    "parcel-bundler": "1.12.4",
+    "prettier": "2.0.5",
+    "typescript": "3.8.3"
+  },
+  "dependencies": {
+    "rxjs": "6.5.5"
+  }
+}
